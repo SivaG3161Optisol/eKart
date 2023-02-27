@@ -20,7 +20,12 @@ class CounterBloc {
       if (event == CounterAction.Increment) {
         counter++;
       } else if (event == CounterAction.Decrement) {
-        counter--;
+        if(counter == 0){
+          CounterAction.Reset;
+        }else {
+          counter--;
+        }
+
       } else if (event == CounterAction.Reset) {
         counter = 0;
       }

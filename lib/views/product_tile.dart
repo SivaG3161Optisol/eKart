@@ -104,9 +104,12 @@ class ProductTile extends StatelessWidget {
                   stream: counterBloc.counterStream,
                   initialData: 0,
                   builder: (context, snapshot) {
-                    return Text(
-                      '${snapshot.data}',
-                      style: Theme.of(context).textTheme.subtitle1,
+                    return Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text(
+                        '${snapshot.data}',
+                        style: Theme.of(context).textTheme.subtitle1,
+                      ),
                     );
                   },
                 ),

@@ -140,3 +140,9 @@ class EnumValues<T> {
     return reverseMap;
   }
 }
+
+class WishedProducts {
+
+
+
+}

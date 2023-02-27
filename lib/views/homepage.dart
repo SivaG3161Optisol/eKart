@@ -1,4 +1,5 @@
 import 'package:e_kart/models/product.dart';
+import 'package:e_kart/views/wishlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
@@ -25,14 +26,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Expanded(
-          child: Text(
+        title: Text(
             'eKart',
             style: TextStyle(
                 fontFamily: 'avenir',
                 fontSize: 32,
                 fontWeight: FontWeight.w900),
-          ),
         ),
         elevation: 0,
         actions: [
@@ -41,7 +40,7 @@ class _HomePageState extends State<HomePage> {
               Icons.favorite_outline_rounded,
             ),
             onPressed: () {
-              _goToWishListPage(product);
+              _goToWishListPage();
             },
           ),
           IconButton(
@@ -87,35 +86,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _goToWishListPage(Product product) {
+  void _goToWishListPage() {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (context) {
-          final tiles = _wished.map(
-                (pair) {
-              return ListTile(
-                title: Text(
-                  product.id.toString(),
-                  style: const TextStyle(
-                      fontSize: 18.0
-                  ),
-                ),
-              );
-            },
-          );
-          final divided = tiles.isNotEmpty
-              ? ListTile.divideTiles(
-            context: context,
-            tiles: tiles,
-          ).toList()
-              : <Widget>[];
 
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('Wish List'),
-            ),
-            body: ListView(children: divided),
-          );
+          return WishList();
         },
       ),
     );

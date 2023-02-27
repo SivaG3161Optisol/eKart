@@ -17,7 +17,7 @@ class ProductTile extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Stack(
               children: [
@@ -86,45 +86,50 @@ class ProductTile extends StatelessWidget {
             SizedBox(height: 8),
             Text('\$${product.price}',
                 style: TextStyle(fontSize: 32, fontFamily: 'avenir')),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                InkWell(
-                    onTap: () {
-                      counterBloc.eventSink.add(CounterAction.Decrement);
+            Container(
+
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  InkWell(
+                      onTap: () {
+                        counterBloc.eventSink.add(CounterAction.Decrement);
+                      },
+                      borderRadius: BorderRadius.circular(18),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Icon(
+                          Icons.remove_circle,
+                          color: Colors.red[400],
+                        ),
+                      )),
+                  StreamBuilder(
+                    stream: counterBloc.counterStream,
+                    initialData: 0,
+                    builder: (context, snapshot) {
+                      return Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text(
+                          '${snapshot.data}',
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                      );
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.remove_circle,
-                        color: Colors.red[300],
-                      ),
-                    )),
-                StreamBuilder(
-                  stream: counterBloc.counterStream,
-                  initialData: 0,
-                  builder: (context, snapshot) {
-                    return Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Text(
-                        '${snapshot.data}',
-                        style: Theme.of(context).textTheme.subtitle1,
-                      ),
-                    );
-                  },
-                ),
-                InkWell(
-                    onTap: () {
-                      counterBloc.eventSink.add(CounterAction.Increment);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.add_circle,
-                        color: Colors.green[300],
-                      ),
-                    )),
-              ],
+                  ),
+                  InkWell(
+                      onTap: () {
+                        counterBloc.eventSink.add(CounterAction.Increment);
+                      },
+                      borderRadius: BorderRadius.circular(18),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Icon(
+                          Icons.add_circle,
+                          color: Colors.green[500],
+                        ),
+                      )),
+                ],
+              ),
             ),
           ],
         ),

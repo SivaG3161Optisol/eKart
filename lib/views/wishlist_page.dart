@@ -4,13 +4,12 @@ import '../models/product.dart';
 
 
 class WishList extends StatelessWidget {
-  const WishList(int? id, {Key? key}) : super(key: key);
+  const WishList({Key? key}) : super(key: key);
 
 
   @override
   Widget build(BuildContext context) {
 
-    final Product product;
 
     return Scaffold(
       appBar: AppBar(

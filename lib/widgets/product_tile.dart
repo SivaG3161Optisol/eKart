@@ -1,3 +1,4 @@
+import 'package:e_kart/views/wishlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:e_kart/models/product.dart';
@@ -8,7 +9,6 @@ class ProductTile extends StatelessWidget {
   final Product product;
   final counterBloc = CounterBloc();
   ProductTile(this.product);
-
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class ProductTile extends StatelessWidget {
                         child: IconButton(
                           icon: product.isFavorite.value
                               ? Icon(Icons.favorite_rounded,
-                                  color: product.isFavorite != null
+                                  color: product.isFavorite.value
                                       ? Colors.redAccent
                                       : null)
                               : Icon(Icons.favorite_border),

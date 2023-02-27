@@ -8,7 +8,6 @@ import 'package:e_kart/widgets/product_tile.dart';
 
 import '../counter_bloc.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -24,19 +23,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    bool _listViewState = false;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-            'eKart',
-            style: TextStyle(
-                fontFamily: 'avenir',
-                fontSize: 32,
-                fontWeight: FontWeight.w900),
+        title: const Text(
+          'eKart',
+          style: TextStyle(
+              fontFamily: 'avenir', fontSize: 32, fontWeight: FontWeight.w900),
         ),
         elevation: 0,
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.favorite_outline_rounded,
             ),
             onPressed: () {
@@ -44,7 +43,7 @@ class _HomePageState extends State<HomePage> {
             },
           ),
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.shopping_cart,
             ),
             onPressed: () {},
@@ -58,26 +57,41 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               children: [
                 IconButton(
-                    icon: Icon(Icons.view_list_rounded), onPressed: () {}),
-                IconButton(icon: Icon(Icons.grid_view), onPressed: () {}),
+                    icon: const Icon(Icons.view_list_rounded),
+                    onPressed: () {
+
+                    }),
+                IconButton(
+                    icon: const Icon(Icons.grid_view),
+                    onPressed: () {
+                      setState(() {
+                        _listViewState = false;
+                      });
+                    }),
               ],
             ),
           ),
           Expanded(
             child: Obx(() {
               if (productController.isLoading.value) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else {
-                return StaggeredGridView.countBuilder(
-                  crossAxisCount: 2,
-                  itemCount: productController.productList.length,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  itemBuilder: (context, index) {
+                if (_listViewState) {
+                  return ListView.builder(itemBuilder: (context, index) {
                     return ProductTile(productController.productList[index]);
-                  },
-                  staggeredTileBuilder: (index) => StaggeredTile.fit(1),
-                );
+                  });
+                } else {
+                  return StaggeredGridView.countBuilder(
+                    crossAxisCount: 2,
+                    itemCount: productController.productList.length,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                    itemBuilder: (context, index) {
+                      return ProductTile(productController.productList[index]);
+                    },
+                    staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
+                  );
+                }
               }
             }),
           )
@@ -90,11 +104,9 @@ class _HomePageState extends State<HomePage> {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (context) {
-
           return WishList();
         },
       ),
     );
   }
 }
-

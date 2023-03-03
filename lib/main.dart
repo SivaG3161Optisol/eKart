@@ -1,4 +1,4 @@
-import 'package:e_kart/views/homepage.dart';
+import 'package:e_kart/screens/app.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: const App(),
       debugShowCheckedModeBanner: false,
     );
   }

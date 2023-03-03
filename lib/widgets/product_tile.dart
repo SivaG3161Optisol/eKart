@@ -1,9 +1,9 @@
-import 'package:e_kart/views/wishlist_page.dart';
+import 'package:e_kart/screens/wishlist_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:e_kart/models/product.dart';
 
-import '../counter_bloc.dart';
+import '../blocs/counter_bloc.dart';
 
 class ProductTile extends StatelessWidget {
   final Product product;

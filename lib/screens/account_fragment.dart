@@ -10,6 +10,10 @@ class AccountFragment extends StatefulWidget {
 class _AccountFragmentState extends State<AccountFragment> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+
+    );
   }
 }

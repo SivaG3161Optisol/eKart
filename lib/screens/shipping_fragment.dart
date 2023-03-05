@@ -10,6 +10,9 @@ class ShippingFragment extends StatefulWidget {
 class _ShippingFragmentState extends State<ShippingFragment> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+    );
   }
 }

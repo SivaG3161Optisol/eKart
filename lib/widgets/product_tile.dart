@@ -47,6 +47,7 @@ class ProductTile extends StatelessWidget {
                           color: Colors.redAccent),
                       onPressed: () {
                         product.isFavorite.toggle();
+                        // Get.to(() => WishList());
                       },
                     ),
                   )),

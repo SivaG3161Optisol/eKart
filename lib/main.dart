@@ -1,5 +1,8 @@
 import 'package:e_kart/screens/app.dart';
+import 'package:e_kart/screens/wishlist_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get_navigation/src/routes/get_route.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,12 +14,23 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'eKart',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const App(),
+      initialRoute: '/home',
+      getPages: [
+        GetPage(
+          name: '/home',
+          page: () => App(),
+        ),
+        GetPage(
+          name: '/wishlist',
+          page: () => WishList(),
+        ),
+      ],
       debugShowCheckedModeBanner: false,
     );
   }

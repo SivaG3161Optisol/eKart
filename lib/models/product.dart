@@ -14,7 +14,7 @@ String productToJson(List<Product> data) =>
 class Product {
   Product({
     this.id,
-    this.brand,
+    required this.brand,
     required this.name,
     this.price,
     this.priceSign,
@@ -35,7 +35,7 @@ class Product {
   });
 
   int? id;
-  Brand? brand;
+  Brand brand;
   String name;
   String? price;
   dynamic priceSign;
@@ -141,8 +141,29 @@ class EnumValues<T> {
   }
 }
 
-class WishedProducts {
+class SelectedProducts {
 
+  SelectedProducts(
+      String name,
+      Brand? brand,
+      String imageLink,
+      String? price,  {
+    this.productName,
+    this.productBrand,
+    this.productImageLink,
+    this.productPrice,
+   });
 
+  String? productName;
+  String? productBrand;
+  String? productImageLink;
+  String? productPrice;
 
+  Map<String, dynamic> toJson() => {
+    "productName": productName,
+    "productBrand": productBrand,
+    "productImageLink": productImageLink,
+    "productPrice": productPrice,
+
+  };
 }

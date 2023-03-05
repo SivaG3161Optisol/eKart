@@ -1,6 +1,8 @@
+import 'package:e_kart/utils/notifier.dart';
 import 'package:get/state_manager.dart';
 import 'package:e_kart/models/product.dart';
 import 'package:e_kart/services/remote_services.dart';
+import 'package:e_kart/res/log.dart';
 
 class ProductController extends GetxController {
   var isLoading = true.obs;
@@ -19,7 +21,9 @@ class ProductController extends GetxController {
       if (products != null) {
         productList.value = products;
       }
-    } finally {
+    } on Exception catch (_, exp) {
+      Log.e("$exp");
+    } finally{
       isLoading(false);
     }
   }

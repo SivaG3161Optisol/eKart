@@ -15,8 +15,12 @@ class WishList extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Wish List'),
       ),
-      body: const ListTile(
-        title: Text("1"),
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: const ListTile(
+          title: Text("1"),
+        ),
       ),
     );
   }

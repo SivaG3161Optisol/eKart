@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/wishlist',
-          page: () => WishList(),
+          page: () => Wishlist(),
         ),
       ],
       debugShowCheckedModeBanner: false,

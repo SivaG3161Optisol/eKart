@@ -119,7 +119,7 @@ class _AppState extends State<App> {
       MaterialPageRoute<void>(
           builder: (context) {
             if (pageName == Strings.wishlistPage) {
-              return  WishList();
+              return  Wishlist();
             }else {
               return  App();
             }
